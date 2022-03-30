@@ -56,7 +56,7 @@ module.exports = function(currentUser, matchingUsers, params, token) {
         link_account_token: params.child_token,
         prevent_sign_up: true,
         connection: connections[0],
-        organization: 'org_mnqPuNw27wDlZJhf'
+        organization: token.org_id
       });
     });
     
