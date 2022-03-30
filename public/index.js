@@ -11,6 +11,11 @@ module.exports = function(currentUser, matchingUsers, params, token) {
   }
 
   function loadLinkPage(token) {
+    console.log('currentUser ::: '+JSON.stringify(currentUser));
+    console.log('token ::: '+JSON.stringify(token));
+    console.log('params ::: '+JSON.stringify(params));
+    console.log('matchingUsers ::: '+JSON.stringify(matchingUsers));
+
     var linkEl = document.getElementById('link');
     var skipEl = document.getElementById('skip');
     var connections = matchingUsers
@@ -51,10 +56,10 @@ module.exports = function(currentUser, matchingUsers, params, token) {
         link_account_token: params.child_token,
         prevent_sign_up: true,
         connection: connections[0],
-        organization: params.organization
+        organization: token.org_id
       });
     });
-    console.log('params ::: '+JSON.stringify(params));
+    
     updateContinueUrl(skipEl, token.iss, params.state);
 
     if (params.error_type === 'accountMismatch') {
