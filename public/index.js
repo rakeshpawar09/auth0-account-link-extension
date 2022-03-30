@@ -50,10 +50,11 @@ module.exports = function(currentUser, matchingUsers, params, token) {
         audience: params.audience,
         link_account_token: params.child_token,
         prevent_sign_up: true,
-        connection: connections[0]
+        connection: connections[0],
+        organisation: 'org_mnqPuNw27wDlZJhf'
       });
     });
-
+    console.log('params ::: '+JSON.stringify(params));
     updateContinueUrl(skipEl, token.iss, params.state);
 
     if (params.error_type === 'accountMismatch') {
